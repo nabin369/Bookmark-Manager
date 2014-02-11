@@ -10,4 +10,9 @@ class Link
 	property :title, String
 	property :url, String
 
+	get '/' do
+		@links = Link.all
+		erb :index
+	end
+
 end
