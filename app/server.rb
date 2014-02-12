@@ -14,7 +14,6 @@ set :session_secret, 'super secret'
 get '/' do
 	@links = Link.all
 	erb :index
-
 end
 
 post '/links' do
@@ -40,7 +39,7 @@ get '/users/new' do
 	# note the view is in views/users/new.erb, we need the quotes 
 	# because otherwise ruby would divide the symbol :users by the
 	# variable new (which makes no sense)
-	erb :'users/new'
+	erb :"users/new"
 end
 
 post '/users' do
