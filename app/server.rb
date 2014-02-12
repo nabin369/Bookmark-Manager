@@ -1,5 +1,6 @@
 require 'sinatra'
 require 'data_mapper'
+require 'rack-flash'
 
 require './lib/link' # this needs to be done after datamapper is initialized
 require './lib/tag'
@@ -7,6 +8,8 @@ require './lib/user'
 
 require_relative 'helpers/application'
 require_relative 'data_mapper'
+
+use Rack::Flash
 
 enable :sessions
 set :session_secret, 'super secret'
@@ -42,18 +45,30 @@ post '/tags' do
 end
 
 get '/users/new' do
+	@user = User.new
 	# note the view is in views/users/new.erb, we need the quotes 
 	# because otherwise ruby would divide the symbol :users by the
 	# variable new (which makes no sense)
 	erb :"users/new"
 end
 
+post '/users/new' do
+	redirect to('/users/new')
+end
+
 post '/users' do
-	user = User.create(:email => params[:email], :password => params[:password],
+	# initialize the object without saving which may be invalid
+	@user = User.create(:email => params[:email], :password => params[:password],
 		:password_confirmation => params[:password_confirmation])
 
-	session[:user_id] = user.id
-	redirect to('/')
+	# if it is valid, save
+	if @user.save
+		session[:user_id] = @user.id
+		redirect to('/')
+	else
+		flash[:notice] = "Sorry, your passwords don't match"
+		erb :"users/new"
+	end
 end
 
 get '/back' do
