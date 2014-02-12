@@ -41,7 +41,7 @@ post '/tags' do
 	erb :index
 end
 
-post '/users/new' do
+get '/users/new' do
 	# note the view is in views/users/new.erb, we need the quotes 
 	# because otherwise ruby would divide the symbol :users by the
 	# variable new (which makes no sense)
@@ -49,7 +49,9 @@ post '/users/new' do
 end
 
 post '/users' do
-	user = User.create(:email => params[:email], :password => params[:password])
+	user = User.create(:email => params[:email], :password => params[:password],
+		:password_confirmation => params[:password_confirmation])
+
 	session[:user_id] = user.id
 	redirect to('/')
 end
