@@ -5,12 +5,11 @@ require './lib/link' # this needs to be done after datamapper is initialized
 require './lib/tag'
 require './lib/user'
 
-require_relative 'app/helpers/application'
-require_relative 'app/data_mapper'
+require_relative 'helpers/application'
+require_relative 'data_mapper'
 
 enable :sessions
 set :session_secret, 'super secret'
-
 
 get '/' do
 	@links = Link.all
@@ -49,7 +48,6 @@ post '/users' do
 	session[:user_id] = user.id
 	redirect to('/')
 end
-
 
 
 
