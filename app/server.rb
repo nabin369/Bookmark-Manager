@@ -35,6 +35,12 @@ get '/tags/:text' do
 	erb :index
 end
 
+post '/tags' do
+	tag = Tag.first(:text => params['tags'])
+	@links = tag ? tag.links : []
+	erb :index
+end
+
 get '/users/new' do
 	# note the view is in views/users/new.erb, we need the quotes 
 	# because otherwise ruby would divide the symbol :users by the
@@ -48,6 +54,9 @@ post '/users' do
 	redirect to('/')
 end
 
+get '/back' do
+	redirect to('/')
+end
 
 
 
