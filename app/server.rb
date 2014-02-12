@@ -41,7 +41,7 @@ post '/tags' do
 	erb :index
 end
 
-get '/users/new' do
+post '/users/new' do
 	# note the view is in views/users/new.erb, we need the quotes 
 	# because otherwise ruby would divide the symbol :users by the
 	# variable new (which makes no sense)
