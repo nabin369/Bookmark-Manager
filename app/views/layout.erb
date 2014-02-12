@@ -7,10 +7,10 @@
 
 <body>
 
-	<% if current_user && !flash[:errors] %>
+	<% if current_user && flash[:errors].empty? %>
 		Welcome, <%= current_user.email %>
 	<% elsif flash[:errors] && !flash[:errors].empty? %>
-		Sorry, there were the following problems with the form.
+		Sorry, 
 		<ul id="errors">
 			<% flash[:errors].each do |error| %>
 				<li><%= error %></li>
