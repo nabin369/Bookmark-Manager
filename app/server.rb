@@ -38,11 +38,11 @@ get '/tags/:text' do
 	erb :index
 end
 
-post '/tags' do
-	tag = Tag.first(:text => params['tags'])
-	@links = tag ? tag.links : []
-	erb :index
-end
+# post '/tags' do
+# 	tag = Tag.first(:text => params['tags'])
+# 	@links = tag ? tag.links : []
+# 	erb :index
+# end
 
 get '/users/new' do
 	@user = User.new
@@ -87,9 +87,15 @@ post '/sessions' do
 	end
 end
 
-get '/back' do
+delete '/sessions' do
+	flash[:notice] = "Good bye!"
+	session[:user_id] = nil
 	redirect to('/')
 end
+
+# get '/back' do
+# 	redirect to('/')
+# end
 
 
 

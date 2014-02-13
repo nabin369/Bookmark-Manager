@@ -9,8 +9,24 @@
 
 	<% if current_user %>
 		Welcome, <%= current_user.email %>
+		<form method="post" action="/sessions">
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" value="Sign out">
+		</form>
+	<% else %>
+		<a href="/users/new" id="sign-up" class="button">Sign Up</a>
+		<a href="/sessions/new" id="sign-in" class="button">Sign in</a>
 	<% end %>
-	
+
+				<% if flash[:notice] %>
+					<div id="notice">
+						<%= flash[:notice] %>
+					</div>
+				<% end %>
+
+
+
+
 	<% if flash[:errors] && !flash[:errors].empty? %>
 		Sorry, 
 		<ul id="errors">
@@ -19,6 +35,7 @@
 			<% end %>
 		</ul>
 	<% end %>
+
 
 	<%= yield %>
 </body>
