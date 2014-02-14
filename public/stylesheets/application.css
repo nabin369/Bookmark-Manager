@@ -1,4 +1,35 @@
 body {
-	background-color: B8F5FF;
-	font-family: sans-serif;
+	background-image: url(/images/wild_flowers.png);
+}
+
+
+#logo {
+	font-family: Cursive;
+	font-size: 30px;
+	color:	#F30;	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+header {
+	background-color: black;
+	height: 50px;
+	display: flex;
+}
+
+.button {
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+	width: 100px;
+	height: 25px;
+	color: 	#FFF;
+	background-color: #82B743;
+	text-decoration: none;
+	border-radius: 5px;
+	border: 2px solid white;
+	display: inline-block;
+	text-align: center;
+	float: right;
+	margin: 10px 20px 10px 10px;
+	text-shadow: 0 0 2px rgba(0,0,0,0.4);
 }
