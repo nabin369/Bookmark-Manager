@@ -46,7 +46,7 @@ header {
 }
 
 header > * {
-	margin: auto;
+	margin: auto 0;
 }
 
 header #logo {
@@ -59,6 +59,12 @@ header a {
 }
 
 header #user-link {
+	flex: 1;
+	-webkit-flex: 1;
+	text-align: right;
+}
+
+header #user-link > * {
 	display: inline-block;
 }
 
