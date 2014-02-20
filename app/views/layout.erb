@@ -2,16 +2,21 @@
 <html>
 <head>
 	<title>Bookmark manager</title>
-		<link href="stylesheets/application.css" rel="stylesheet" type="text/css">
-		<link href="stylesheets/reset.css" rel="stylesheet" type="text/css">
+		<link href="/stylesheets/reset.css" rel="stylesheet" type="text/css">
+		<link href="/stylesheets/application.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-
-	<%= partial :header %>
-	<%= partial :flash %>
-
-	<%= yield %>
-
+	<div class="wrapper">
+		<%= partial :header %>
+		<%= partial :flash %>
+	<div id="container">
+		<%= yield %>
+	</div>
+	<div class="push"></div>
+	</div>
+	<div class="footer">
+		<%= partial :footer %>
+	s</div>
 </body>
 </html>

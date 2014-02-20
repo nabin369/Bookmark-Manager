@@ -7,10 +7,6 @@ get '/users/new' do
 	erb :"users/new"
 end
 
-post '/users/new' do
-	redirect to('/users/new')
-end
-
 post '/users' do
 	# initialize the object without saving which may be invalid
 	@user = User.create(:email => params[:email], :password => params[:password],
